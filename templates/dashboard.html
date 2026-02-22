@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="form-box">
+    <h2>Welcome {{ name }} 🎉</h2>
+
+    <p><strong>Service:</strong> {{ data[0] }}</p>
+    <p><strong>Location:</strong> {{ data[1] }}</p>
+    <p><strong>Rating:</strong> ⭐ {{ rating }}</p>
+    <p><strong>Total Reviews:</strong> {{ reviews }}</p>
+
+    <canvas id="ratingChart"></canvas>
+</div>
+
+<script>
+    const rating = Number("{{ rating }}");
+    const reviews = Number("{{ reviews }}");
+    const ctx = document.getElementById('ratingChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Rating', 'Reviews'],
+            datasets: [{
+                label: 'Provider Stats',
+                data: [rating, reviews],
+                backgroundColor: ['#4e73df', '#1cc88a'],
+                borderRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="form-box">
+    <h2>Request a Service 🛠</h2>
+
+    <form method="POST">
+        <label>Your Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Select Service:</label>
+        <select name="service">
+            <option>Plumber</option>
+            <option>Electrician</option>
+            <option>Carpenter</option>
+            <option>Cleaner</option>
+        </select>
+
+        <label>Describe Problem:</label>
+        <textarea name="problem" rows="4"></textarea>
+
+        <label>Location:</label>
+        <select name="location">
+        <option>Delhi</option>
+        <option>Mumbai</option>
+        <option>Kolkata</option>
+        <option>Bangalore</option>
+        </select>
+
+        <label>
+        <input type="checkbox" name="emergency"> Emergency Service
+        </label>
+        <button type="submit">Submit</button>
+    </form>
+
+    <br>
+    <a href="/">Back to Home</a>
+</div>
+
+</body>
+</html>
